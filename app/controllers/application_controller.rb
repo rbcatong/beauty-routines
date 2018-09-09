@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
   end
 
-  get "/" do
+  get '/' do
     erb :welcome
   end
 
