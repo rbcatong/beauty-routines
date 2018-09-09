@@ -29,6 +29,10 @@ class ApplicationController < Sinatra::Base
     redirect to '/home'
   end
 
+  get '/home' do
+    erb :'/routines/home'
+  end
+
   helpers do
     def logged_in?
       !!session[:user_id]
