@@ -16,6 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
+    redirect to '/home'
   end
 
 
@@ -25,7 +26,7 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-    binding.pry
+    redirect to '/home'
   end
 
   helpers do

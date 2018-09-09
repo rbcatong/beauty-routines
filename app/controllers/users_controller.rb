@@ -1,19 +1,15 @@
 class UsersController < Sinatra::Base
 
-  get '/signup' do
-    erb :'/users/signup'
-  end
+get '/home' do
+  
+end
 
-  post '/signup' do
+get '/createroutine' do
 
-  end
+end
 
-  get '/login' do
-    erb :'/users/login'
-  end
+post '/createroutine' do
 
-  post '/login' do
-    binding.pry
-  end
+end
 
 end
