@@ -1,5 +1,14 @@
 class UsersController < Sinatra::Base
 
+  get '/signup' do
+    erb :'/users/signup'
+  end
+
+  post '/signup' do
+    @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+    redirect to '/home'
+  end
+
   get '/login' do
     if logged_in?
       redirect '/home'
@@ -18,14 +27,13 @@ class UsersController < Sinatra::Base
     end
   end
 
-
-  get '/signup' do
-    erb :'/users/signup'
-  end
-
-  post '/signup' do
-    @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-    redirect to '/home'
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect '/login'
+    else
+      redirect '/'
+    end
   end
 
   get '/home' do
