@@ -1,7 +1,7 @@
-class RoutinesController < Sinatra::Base
+class RoutinesController < ApplicationController
 
   get '/createroutine' do
-    
+
   end
 
   post '/createroutine' do
