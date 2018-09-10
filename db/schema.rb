@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20180908174019) do
 
   create_table "routines", force: :cascade do |t|
     t.text    "routine_content"
+    t.text    "routine_days"
+    t.text    "routine_name"
     t.integer "user_id"
   end
 

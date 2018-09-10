@@ -1,0 +1,24 @@
+<h1>Create Routine</h1>
+
+<form action="/createroutine" method="post">
+  Routine Name:<input type="text" name="routine_name"><br>
+  <br>
+  Day Of The Week:
+  <select form="routine_days">
+  <option value="Sunday">Sunday</option>
+  <option value="Monday">Monday</option>
+  <option value="Tuesday">Tuesday</option>
+  <option value="Wednesday">Wednesday</option>
+  <option value="Thursday">Thursday</option>
+  <option value="Friday">Friday</option>
+  <option value="Saturday">Saturday</option>
+</select>
+  <br>
+  <br>
+  Routine:
+  <br>
+  <textarea name="routine_content">Write routine here.</textarea>
+  <br>
+  <br>
+  <input type="submit" value="Submit">
+</form>
