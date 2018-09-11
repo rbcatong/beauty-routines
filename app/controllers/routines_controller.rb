@@ -1,11 +1,18 @@
 class RoutinesController < ApplicationController
 
-  get '/createroutine' do
-    erb :'/routines/create'
+  get '/routines' do
+    erb :'/routines/show'
   end
 
-  post '/createroutine' do
-    
+  get '/createroutine' do
+
+    erb :'/routines/create'
+
+end
+
+  post '/routines' do
+    @routine = current_user.routines.build(name: params[:routine_name], day: params[:routine_days], content: params[:routine_content])
+
   end
 
 end
