@@ -5,13 +5,11 @@ class RoutinesController < ApplicationController
   end
 
   get '/createroutine' do
-
     erb :'/routines/create'
-
 end
 
   post '/routines' do
-    @routine = current_user.routines.build(name: params[:routine_name], day: params[:routine_days], content: params[:routine_content])
+    @routine = current_user.routines.create(name: params[:routine_name], day: params[:routine_days], content: params[:routine_content])
 
   end
 
