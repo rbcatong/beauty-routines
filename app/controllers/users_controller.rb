@@ -12,8 +12,10 @@ class UsersController < ApplicationController
     if params[:username] != "" && params[:email] != "" && params[:password] != ""
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
+      redirect '/home'
     else
-      redirect to '/home'
+      redirect to '/signup'
+    end
   end
 
   get '/login' do

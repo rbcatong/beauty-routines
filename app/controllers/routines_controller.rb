@@ -9,7 +9,7 @@ class RoutinesController < ApplicationController
 end
 
   post '/routines' do
-    @routine = current_user.routines.create(name: params[:routine_name], day: params[:routine_days], content: params[:routine_content])
+    @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
 
   end
 
