@@ -18,6 +18,7 @@ class RoutinesController < ApplicationController
 end
 
   post '/routines' do
+    if logged_in?
     @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
 
   end
