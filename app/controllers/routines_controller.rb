@@ -1,11 +1,20 @@
 class RoutinesController < ApplicationController
 
   get '/routines' do
-    erb :'/routines/show'
+    if logged_in
+      erb :'/routines/show'
+    else
+      erb :'/'
+    end
   end
 
   get '/createroutine' do
-    erb :'/routines/create'
+    if logged_in
+      if params[:routine_name] != "" && params[:routine_content] != ""
+      erb :'/routines/create'
+    else
+      erb :'/'
+    end
 end
 
   post '/routines' do
