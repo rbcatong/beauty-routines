@@ -3,8 +3,8 @@ class Routine < ActiveRecord::Base
   belongs_to :user
 
   def slug
-  if name
-    [name.parameterize].join("-")
+  if routine_name
+    [routine_name.parameterize].join("-")
   end
 end
 
