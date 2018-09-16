@@ -34,4 +34,8 @@ class RoutinesController < ApplicationController
     erb :'/routines/edit'
   end
 
+  patch '/routines/:slug' do
+    
+  end
+
 end
