@@ -35,7 +35,10 @@ class RoutinesController < ApplicationController
   end
 
   patch '/routines/:slug' do
-    
+    @routine.routine_name = Routine.find_by_slug(params[:slug])
+    @routine.routine_days = params[:routine_days]
+    @routine.content = params[:routine_content]
+    @routine.save
   end
 
 end
