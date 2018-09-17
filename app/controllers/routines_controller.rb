@@ -31,6 +31,7 @@ class RoutinesController < ApplicationController
 
   get '/routines/:slug/edit' do
     @routine = Routine.find_by_slug(params[:slug])
+    binding.pry
     erb :'/routines/edit'
   end
 

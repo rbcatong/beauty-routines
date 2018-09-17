@@ -3,7 +3,10 @@
 <form action="routines/<%=@routine.slug%>" method="POST">
   <input type="hidden" name="_method" value="patch">
 
-
+  <%=@routine.routine_name%>
+  <input type="text" name="routine_name">
+  <%=@routine.routine_days%>
+  <input type="text" name="routine_days">
   <%=@routine.routine_content%>
   <input type="text" name="routine_content">
 
