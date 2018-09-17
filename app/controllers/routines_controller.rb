@@ -55,5 +55,3 @@ class RoutinesController < ApplicationController
 
 
   end
-
-end
