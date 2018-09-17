@@ -1,6 +1,9 @@
 <%Routine.all.each do |routine|%>
-<%=routine.routine_name%>
-<%=routine.routine_days%>
-<%=routine.routine_content%>
+<b><u><%=routine.routine_name%></b></u>
+<br>
+<u>Day of the Week:</u> <%=routine.routine_days%>
+<br>
+<u> Routine:</u> <%=routine.routine_content%>
+<br>
 <br>
 <%end%>
