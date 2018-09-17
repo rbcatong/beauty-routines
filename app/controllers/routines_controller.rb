@@ -31,7 +31,6 @@ class RoutinesController < ApplicationController
 
   get '/routines/:slug/edit' do
     @routine = Routine.find_by_slug(params[:slug])
-    binding.pry
     erb :'/routines/edit'
   end
 
@@ -40,6 +39,21 @@ class RoutinesController < ApplicationController
     @routine.routine_days = params[:routine_days]
     @routine.content = params[:routine_content]
     @routine.save
+  end
+
+  get '/routines/:slug' do
+    if logged_in?
+      @routine = Routine.find_by_slug(params[:slug])
+      if @routine.user_id == session[:user_id]
+        @routine.destroy
+        redirect '/routines'
+      else
+        redirect '/login'
+      end
+    end
+  end
+
+
   end
 
 end
