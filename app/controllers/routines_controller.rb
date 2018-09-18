@@ -28,22 +28,24 @@ class RoutinesController < ApplicationController
     end
   end
 
-  get '/routines/:slug/edit' do
-    @routine = Routine.find_by_slug(params[:slug])
+  get '/routines/:id/edit' do
+    @routine = Routine.find_by_id(params[:id])
     erb :'/routines/edit'
   end
 
-  patch '/routines/:slug' do
+  patch '/routines/:id' do
+    @routine = Routine.find_by_id(params[:id])
     @routine.routine_name = params[:routine_name]
     @routine.routine_days = params[:routine_days]
     @routine.routine_content = params[:routine_content]
     @routine.save
+    redirect '/routines'
   end
 
   get '/routines/:slug' do
     if logged_in?
-      @routine = Routine.find_by_slug(params[:slug])
-      if @routine.user_id == session[:user_id]
+      @routine = Routine.find_by_id(params[:id])
+      if @routine.user_id == current_user
         @routine.destroy
         redirect '/routines'
       else
