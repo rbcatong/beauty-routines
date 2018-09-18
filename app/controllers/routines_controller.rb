@@ -20,6 +20,7 @@ class RoutinesController < ApplicationController
     if logged_in?
       if params[:routine_name] != "" && params[:routine_content] != ""
       @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
+      erb :'/routines/show'
     else
       redirect '/createroutine'
     end
@@ -47,7 +48,7 @@ class RoutinesController < ApplicationController
       @routine = Routine.find_by_id(params[:id])
       if @routine.user_id == session[:id]
         @routine.destroy
-        redirect '/home'
+        redirect '/routines'
       else
         redirect '/login'
       end
