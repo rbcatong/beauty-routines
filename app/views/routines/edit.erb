@@ -1,19 +1,37 @@
+<a href="/home">HomePage</a>
+<br>
+<br>
+
 <h1> Edit Routine </h1>
 
 <form action="/routines/<%=@routine.id%>" method="POST">
   <input type="hidden" name="_method" value="patch">
 
-Routine Name:<%=@routine.routine_name%>
-  <input type="text" name="routine_name">
+<u>Current Routine Name:</u><%=@routine.routine_name%>
+<br>
+New Routine Name: <input type="text" name="routine_name">
 
   <br>
-Routine Day:<%=@routine.routine_days%>
-  <input type="text" name="routine_days">
-
   <br>
 
-  Routine Content:<%=@routine.routine_content%>
-  <input type="text" name="routine_content">
+<u>Current Routine Day:</u><%=@routine.routine_days%>
+<br>
+  New Routine Day:<select name="routine_days">
+  <option value="Sunday">Sunday</option>
+  <option value="Monday">Monday</option>
+  <option value="Tuesday">Tuesday</option>
+  <option value="Wednesday">Wednesday</option>
+  <option value="Thursday">Thursday</option>
+  <option value="Friday">Friday</option>
+  <option value="Saturday">Saturday</option>
+</select>
+
+  <br>
+  <br>
+
+  <u>Current Routine Content:</u><%=@routine.routine_content%>
+  <br>
+  New Routine Content:<textarea name="routine_content">Write routine here.</textarea>
 
 
   <input type="submit" value="submit">
