@@ -46,7 +46,7 @@ class RoutinesController < ApplicationController
   delete '/routines/:id' do
     if logged_in?
       @routine = Routine.find_by_id(params[:id])
-      if @routine.user_id == session[:id]
+      if @routine.user_id == current_user.id
         @routine.destroy
         redirect '/routines'
       else
