@@ -20,7 +20,6 @@ class RoutinesController < ApplicationController
     if logged_in?
       if params[:routine_name] != "" && params[:routine_content] != ""
       @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
-      # redirect "/routines/#{@routine.slug}/edit"
     else
       redirect '/createroutine'
     end
@@ -35,9 +34,9 @@ class RoutinesController < ApplicationController
   end
 
   patch '/routines/:slug' do
-    @routine.routine_name = Routine.find_by_slug(params[:slug])
+    @routine.routine_name = params[:routine_name]
     @routine.routine_days = params[:routine_days]
-    @routine.content = params[:routine_content]
+    @routine.routine_content = params[:routine_content]
     @routine.save
   end
 

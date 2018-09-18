@@ -1,13 +1,18 @@
 <h1> Edit Routine </h1>
 
-<form action="/routines/<%=@routine.slug%>" method="POST">
+<form action="/routines/" method="POST">
   <input type="hidden" name="_method" value="patch">
 
-  <%=@routine.routine_name%>
+Routine Name:<%=@routine.routine_name%>
   <input type="text" name="routine_name">
-  <%=@routine.routine_days%>
+
+  <br>
+Routine Day:<%=@routine.routine_days%>
   <input type="text" name="routine_days">
-  <%=@routine.routine_content%>
+
+  <br>
+
+  Routine Content:<%=@routine.routine_content%>
   <input type="text" name="routine_content">
 
 
