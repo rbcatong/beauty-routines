@@ -42,12 +42,12 @@ class RoutinesController < ApplicationController
     redirect '/routines'
   end
 
-  get '/routines/:slug' do
+  delete '/routines/:id' do
     if logged_in?
       @routine = Routine.find_by_id(params[:id])
-      if @routine.user_id == current_user
+      if @routine.user_id == session[:id]
         @routine.destroy
-        redirect '/routines'
+        redirect '/home'
       else
         redirect '/login'
       end
