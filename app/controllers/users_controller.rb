@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
+      @error = session[:error]
     erb :'/users/signup'
   else
     redirect '/routines'
@@ -9,11 +10,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:username] != "" && params[:email] != "" && params[:password] != ""
+    no_blanks = params[:username] != "" && params[:email] != "" && params[:password] != ""
+    user_exists = !!User.find_by(username: params[:username])
+    if no_blanks && !user_exists
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
       redirect '/home'
     else
+      session[:error] = "There was an error during signup."
       redirect to '/signup'
     end
   end
