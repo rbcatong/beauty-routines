@@ -10,6 +10,7 @@ class RoutinesController < ApplicationController
 
   get '/createroutine' do
     if logged_in?
+
       erb :'/routines/create'
     else
       erb :'/'
@@ -22,6 +23,8 @@ class RoutinesController < ApplicationController
       @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
       erb :'/routines/show'
     else
+      @error1 = session[:error]
+      session[:error] = "There was an error during creating a routine."
       redirect '/createroutine'
     end
   else
