@@ -23,9 +23,9 @@ class RoutinesController < ApplicationController
       @routine = current_user.routines.create(routine_name: params[:routine_name], routine_days: params[:routine_days], routine_content: params[:routine_content])
       erb :'/routines/show'
     else
+      session[:error] = "There was an error while creating a routine, please fill in all blanks."
       @error1 = session[:error]
-      session[:error] = "There was an error during creating a routine."
-      redirect '/createroutine'
+      erb :'/routines/create'
     end
   else
     redirect '/login'
