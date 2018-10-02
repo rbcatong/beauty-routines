@@ -34,10 +34,15 @@ class RoutinesController < ApplicationController
 
   get '/routines/:id/edit' do
     @routine = Routine.find_by_id(params[:id])
-    erb :'/routines/edit'
+      if session[:user_id] == @routine.user_id
+      erb :'/routines/edit'
+    else
+      redirect '/login'
+    end
   end
 
   patch '/routines/:id' do
+    if logged_in? && current_user
     @routine = Routine.find_by_id(params[:id])
         @routine.routine_name = params[:routine_name]
         @routine.routine_days = params[:routine_days]
@@ -49,6 +54,7 @@ class RoutinesController < ApplicationController
         session[:error] = "There was an error while creating a routine, please fill in all blanks."
         @error2 = session[:error]
         erb :'/routines/edit'
+        end
       end
     end
   end
