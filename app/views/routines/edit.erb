@@ -4,6 +4,8 @@
 
 <h1> Edit Routine </h1>
 
+<p> <%=@error2%> </p>
+
 <form action="/routines/<%=@routine.id%>" method="POST">
   <input type="hidden" name="_method" value="patch">
 
@@ -17,6 +19,7 @@ New Routine Name: <input type="text" name="routine_name">
 <u>Current Routine Day:</u><%=@routine.routine_days%>
 <br>
   New Routine Day:<select name="routine_days">
+  <option value=" "> </option>
   <option value="Sunday">Sunday</option>
   <option value="Monday">Monday</option>
   <option value="Tuesday">Tuesday</option>
@@ -31,7 +34,7 @@ New Routine Name: <input type="text" name="routine_name">
 
   <u>Current Routine Content:</u><%=@routine.routine_content%>
   <br>
-  New Routine Content:<textarea name="routine_content">Write routine here.</textarea>
+  New Routine Content:<textarea name="routine_content" placeholder="Write routine here."></textarea>
 
 
   <input type="submit" value="submit">
